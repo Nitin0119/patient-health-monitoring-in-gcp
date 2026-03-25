@@ -169,9 +169,9 @@ CALCULATE(
 - Embed in clinical portals
 
 **Dashboard Screenshot**:
-![PowerBI Patient Vitals Dashboard](D:\ScreenShots\Screenshot 2026-03-25 150042.png)
+![PowerBI Patient Vitals Dashboard](./docs/Screenshot 2026-03-25 150042.png)
 
-> *Replace `docs/powerbi-dashboard.png` with screenshot of your deployed dashboard (capture: vitals trends, risk cards, patient table).*
+> *Live PowerBI dashboard: real-time vitals trends, high-risk alerts, patient metrics.* 
 
 **Pro Tip**: Add `event_timestamp` from Silver for sub-minute granularity if needed.
 
