@@ -169,7 +169,7 @@ CALCULATE(
 - Embed in clinical portals
 
 **Dashboard Screenshot**:
-![PowerBI Patient Vitals Dashboard](./docs/Screenshot 2026-03-25 150042.png)
+![Architecture](docs/architecture.png)
 
 > *Live PowerBI dashboard: real-time vitals trends, high-risk alerts, patient metrics.* 
 
