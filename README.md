@@ -168,15 +168,10 @@ CALCULATE(
 - Share app/reports (workspace permissions)
 - Embed in clinical portals
 
-**Screenshot Placeholder** (replace with your dashboard):
-```
-┌─────────────────────────────────────┐
-│ High Risk: 3 │ HR: 92.5 │ SpO2: 96% │
-├─────────────────────────────────────┤
-│ P001: 📈 HR=110, Risk=High          │
-│ P015: 📉 SpO2=92, Risk=Mod          │
-└─────────────────────────────────────┘
-```
+**Dashboard Screenshot**:
+![PowerBI Patient Vitals Dashboard](D:\ScreenShots\Screenshot 2026-03-25 150042.png)
+
+> *Replace `docs/powerbi-dashboard.png` with screenshot of your deployed dashboard (capture: vitals trends, risk cards, patient table).*
 
 **Pro Tip**: Add `event_timestamp` from Silver for sub-minute granularity if needed.
 
