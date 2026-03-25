@@ -1,4 +1,4 @@
-# Patient Health Monitoring Pipeline on GCP
+ to# Patient Health Monitoring Pipeline on GCP
 
 [![GCP](https://img.shields.io/badge/GCP-Dataflow%20%7C%20PubSub%20%7C%20BigQuery-blue)](https://cloud.google.com)
 
@@ -119,7 +119,7 @@ risk_level: <0.3=Low, <0.6=Moderate, >=0.6=High
 
 ### BigQuery Schema (`patient_risk_analytics`):
 | Field          | Type  | Description              |
-|----------------|-------|--------------------------|
+
 | patient_id     | STRING| P001                     |
 | avg_heart_rate | FLOAT | 82.5                     |
 | avg_spo2       | FLOAT | 97.2                     |
@@ -134,8 +134,53 @@ WHERE max_risk_level = 'High'
 ORDER BY avg_heart_rate DESC;
 ```
 
-## 📊 Monitoring & Costs
+## 📊 PowerBI Dashboard (Real-time DirectQuery)
 
+Connect PowerBI Desktop to BigQuery Gold table for **live patient vitals monitoring**.
+
+### 🚀 Quick Setup
+1. **PowerBI Desktop** → Get Data → BigQuery
+2. **Project**: `your-project-id`, **Dataset**: `healthcare`, **Table**: `patient_risk_analytics`
+3. **Authentication**: OAuth2 or Service Account JSON key (roles: `bigquery.dataViewer`)
+4. **Mode**: **DirectQuery** (real-time, no import delays)
+5. **Refresh**: Auto (streaming data visible in ~seconds)
+
+### 📈 Recommended Visuals
+| Visual | Measures | Purpose |
+|--------|----------|---------|
+| **Line Chart** | `avg_heart_rate`, `avg_spo2` by `patient_id` + timestamp | Vitals trends (latest 1h) |
+| **Card** | `max_risk_level` (High count), `AVERAGE(avg_heart_rate)` | Current status |
+| **Table** | Top patients by `avg_heart_rate` where `max_risk_level = "High"` | Alert list |
+| **Gauge** | `avg_spo2` threshold (>95 green) | Compliance |
+
+**Sample DAX for High-Risk Alerts**:
+```dax
+High Risk Count = 
+CALCULATE(
+    COUNTROWS('patient_risk_analytics'),
+    'patient_risk_analytics'[max_risk_level] = "High"
+)
+```
+
+### 🌐 Publish & Share
+- Publish to **PowerBI Service**
+- Pin to Dashboard → Auto-tile refresh
+- Share app/reports (workspace permissions)
+- Embed in clinical portals
+
+**Screenshot Placeholder** (replace with your dashboard):
+```
+┌─────────────────────────────────────┐
+│ High Risk: 3 │ HR: 92.5 │ SpO2: 96% │
+├─────────────────────────────────────┤
+│ P001: 📈 HR=110, Risk=High          │
+│ P015: 📉 SpO2=92, Risk=Mod          │
+└─────────────────────────────────────┘
+```
+
+**Pro Tip**: Add `event_timestamp` from Silver for sub-minute granularity if needed.
+
+## 📊 Monitoring & Costs
 - **Dataflow Console**: Job metrics (throughput, latency, errors)
 - **Pub/Sub**: Message backlog
 - **BigQuery**: Slot usage, query costs
@@ -163,8 +208,8 @@ ORDER BY avg_heart_rate DESC;
 | No data in BQ | Verify topic → subscription → pipeline |
 
 ## 🎉 Next Steps
+- [✅] PowerBI Dashboard (DirectQuery to BigQuery Gold)
 - [ ] Add alerting (Pub/Sub → Cloud Functions → email)
-- [ ] Dashboard (Looker Studio on BigQuery)
 - [ ] ML model for anomaly detection
 - [ ] Multi-region deployment
 
