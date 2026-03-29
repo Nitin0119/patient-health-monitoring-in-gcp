@@ -1,12 +1,18 @@
- to# Patient Health Monitoring Pipeline on GCP
+# Patient Health Monitoring Pipeline on GCP
 
-[![GCP](https://img.shields.io/badge/GCP-Dataflow%20%7C%20PubSub%20%7C%20BigQuery-blue)](https://cloud.google.com)
+![Google Cloud](https://img.shields.io/badge/Google%20Cloud-4285F4?logo=googlecloud&logoColor=white)
+![Apache Beam](https://img.shields.io/badge/Apache%20Beam-F47E20?logo=apache&logoColor=white)
+![Dataflow](https://img.shields.io/badge/Dataflow-1A73E8?logo=googlecloud&logoColor=white)
+![BigQuery](https://img.shields.io/badge/BigQuery-669DF6?logo=googlebigquery&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white)
+![Power BI](https://img.shields.io/badge/Power%20BI-F2C811?logo=powerbi&logoColor=black)
 
 Real-time patient vital signs monitoring system built on **Google Cloud Platform (GCP)** using:
 - **Pub/Sub** for event streaming
 - **Apache Beam Dataflow** for streaming ETL (Medallion Architecture)
 - **Cloud Storage (GCS)** for Bronze/Silver layers
 - **BigQuery** for Gold layer analytics
+- **Power BI** for visualization and monitoring
 
 ## 🎯 Architecture Overview
 
@@ -208,5 +214,5 @@ CALCULATE(
 - [ ] ML model for anomaly detection
 - [ ] Multi-region deployment
 
-## License
-MIT
+## 📫 Connect with Me  
+**Author:** *Nitin yadav*
